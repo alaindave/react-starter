@@ -6,7 +6,13 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import App from "./App";
 import "./index.css";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 3,
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -14,5 +20,5 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <App />
       <ReactQueryDevtools />
     </QueryClientProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
